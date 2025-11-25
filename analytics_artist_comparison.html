@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🎤 Artist Comparison</h2>
+<img src="data:image/png;base64,{{ graph }}" class="img-fluid">
+
+<table class="table mt-4">
+<tr><th>Artist</th><th>Total Plays</th></tr>
+{% for r in data %}
+<tr><td>{{ r.artist }}</td><td>{{ r.plays }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

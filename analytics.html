@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">📊 Music Analytics Dashboard</h2>
+
+<div class="row">
+
+    <!-- Songs per Genre -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">Songs per Genre</div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ genre_chart }}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Artists -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">Top Artists</div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ artist_chart }}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Playlist Distribution -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white">Playlist Distribution</div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ playlist_chart }}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avg Duration -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-warning">Average Song Duration per Genre</div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ avg_duration_chart }}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Songs -->
+    <div class="col-md-12 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">Top 5 Most Played Songs</div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ top_songs_chart }}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr class="my-4">
+
+<h3>🔍 More Analytics</h3>
+
+<div class="list-group">
+    <a href="{{ url_for('analytics_top_users') }}" class="list-group-item list-group-item-action">
+        👤 Top Users (Most Played Songs)
+    </a>
+   
+    <a href="{{ url_for('artist_comparison') }}" class="list-group-item list-group-item-action">
+        🎤 Artist Comparison Dashboard
+    </a>
+</div>
+
+{% endblock %}

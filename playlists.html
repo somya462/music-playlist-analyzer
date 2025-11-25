@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-center mb-4">🎧 Playlists</h1>
+
+<div class="text-end mb-3">
+    <a href="/create_playlist" class="btn btn-success">+ Create Playlist</a>
+</div>
+
+<div class="row">
+    {% for p in playlists %}
+    <div class="col-md-3">
+        <div class="card bg-secondary shadow-sm mb-4 playlist-card">
+
+            <a href="/playlist/{{ p.id }}">
+                <img src="{{ url_for('static', filename='uploads/' + (p.thumbnail or 'default.jpg')) }}"
+                     class="playlist-thumb card-img-top">
+            </a>
+
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ p.name }}</h5>
+                <p class="text-muted small">Created: {{ p.created_at }}</p>
+
+                <a href="/edit_playlist/{{ p.id }}" class="btn btn-primary btn-sm me-1">Edit</a>
+                <form action="/playlists/{{ p.id }}/delete" method="POST" style="display:inline;">
+                   <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

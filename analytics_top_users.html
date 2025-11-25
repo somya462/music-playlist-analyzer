@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🏆 Top Users</h2>
+<img src="data:image/png;base64,{{ graph }}" class="img-fluid">
+
+<table class="table table-bordered mt-4">
+    <tr><th>User</th><th>Plays</th></tr>
+    {% for row in data %}
+    <tr><td>{{ row.username }}</td><td>{{ row.play_count }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center my-4">🎵 Playlist Songs</h2>
+
+<table class="table table-dark table-bordered table-hover">
+    <thead class="table-danger text-center">
+        <tr>
+            <th>Playlist Name</th>
+            <th>Song Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for ps in playlist_songs %}
+        <tr>
+            <td>{{ ps.playlist_name }}</td>
+            <td>{{ ps.song_title }}</td>
+            <td>{{ ps.artist }}</td>
+            <td>{{ ps.genre }}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

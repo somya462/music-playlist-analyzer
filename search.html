@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">🔍 Search Results for "{{ q }}"</h2>
+
+<!-- Search Bar -->
+<form action="/search" method="get" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" value="{{ q }}" placeholder="Search songs, artists, genres..."
+               class="form-control">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+
+<!-- SONG RESULTS -->
+<h3 class="mt-4 text-warning">🎵 Songs</h3>
+{% if results.songs %}
+<ul class="list-group mb-4">
+    {% for s in results.songs %}
+    <li class="list-group-item bg-dark text-white border-secondary">
+        <strong>{{ s.title }}</strong><br>
+        <span class="text-muted">
+            Artist: {{ s.artist }} &nbsp; | &nbsp; Genre: {{ s.genre }}
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="text-muted">No matching songs found.</p>
+{% endif %}
+
+<!-- ARTIST RESULTS -->
+<h3 class="mt-4 text-info">🎤 Artists</h3>
+{% if results.artists %}
+<ul class="list-group mb-4">
+    {% for a in results.artists %}
+    <li class="list-group-item bg-dark text-white border-secondary">
+        {{ a.name }}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="text-muted">No matching artists found.</p>
+{% endif %}
+
+<!-- GENRE RESULTS -->
+<h3 class="mt-4 text-success">🎧 Genres</h3>
+{% if results.genres %}
+<ul class="list-group mb-5">
+    {% for g in results.genres %}
+    <li class="list-group-item bg-dark text-white border-secondary">
+        {{ g.name }}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="text-muted">No matching genres found.</p>
+{% endif %}
+
+{% endblock %}

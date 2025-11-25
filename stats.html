@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center mb-4">📊 Genre Statistics</h2>
+<canvas id="genreChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('genreChart');
+const data = {
+  labels: {{ genre_data | map(attribute=0) | list | safe }},
+  datasets: [{
+    label: 'Songs per Genre',
+    data: {{ genre_data | map(attribute=1) | list | safe }},
+    backgroundColor: ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f','#edc948']
+  }]
+};
+
+new Chart(ctx, {
+  type: 'bar',
+  data: data,
+});
+</script>
+{% endblock %}

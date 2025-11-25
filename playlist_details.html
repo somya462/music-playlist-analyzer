@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center">
+    <h1>{{ playlist.name }}</h1>
+
+    <img src="{{ url_for('static', filename='uploads/' + (playlist.thumbnail or 'default.jpg')) }}"
+         class="playlist-thumb mb-3" style="width:250px; height:250px;">
+
+    <p class="text-muted">Created on: {{ playlist.created_at }}</p>
+
+    <a href="/edit_playlist/{{ playlist.id }}" class="btn btn-primary">Edit</a>
+    <a href="/playlists" class="btn btn-outline-light">Back</a>
+</div>
+
+<hr>
+
+<h3>Songs in this Playlist</h3>
+
+<ul class="list-group">
+    {% for s in songs %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ s.title }}
+        <a href="/remove_song/{{ playlist.id }}/{{ s.id }}" class="btn btn-danger btn-sm">Remove</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

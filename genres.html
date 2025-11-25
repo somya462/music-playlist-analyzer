@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">🎧 Genres</h2>
+<table class="table table-hover table-bordered">
+  <thead class="table-warning">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for g in genres %}
+    <tr>
+      <td>{{ g.id }}</td>
+      <td>{{ g.name }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
